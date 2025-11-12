@@ -52,11 +52,12 @@ const libros = [
 //ENDPOINT PARA LIBROS
 router.get('/', (req, res) => {
     const {disponible} = req.query //capturo la query disponible
-    if (disponible === false || disponible){ 
-        const librosDisponibles = libros.filter(libro => libro.disponible === Boolean(disponible))
+    if (disponible !== undefined){ //Si en la req.query.disponible es diferente de undefinded
+        const disponibleBolean = disponible === "true" // creamos un boleano a partir de la informacion en disponible
+        const librosDisponibles = libros.filter(libro => libro.disponible === disponibleBolean) // buscamos los libros que en disponible tengan true o false dependiendo del boolean obtenido en la linea anterior
         return res.send(librosDisponibles)
     }
-    
+    //si disponible esta indefinido es decir undefined entonces no entre al if y pase directo a imprimir todos los libros (caso donde la url no tiene query)
     res.send(libros)
 });
 
