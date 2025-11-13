@@ -11,7 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "@hapi/boom": "^10.0.1",
+    "@prisma/client": "^6.19.0",
     "express": "^5.1.0",
     "joi": "^18.0.1"
+  },
+  "devDependencies": {
+    "prisma": "^6.19.0"
   }
 }

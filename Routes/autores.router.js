@@ -67,8 +67,9 @@ router.get('/:id',
     });
 
 //ENDPOINT CREAR UN NUEVO AUTOR
-router.post('/', (req, res) => {
-
+router.post('/', 
+    validatorHandler(createAutorSchema, "body"),
+    (req, res) => {
     const autores = [
         { id: 1, 
                 nombre: "Gabriel García Marquez", 
@@ -98,7 +99,9 @@ router.post('/', (req, res) => {
 });
 
 //ENDPOINT ACTUALIZAR UN AUTOR
-router.put('/:id', (req, res) => {
+router.put('/:id', 
+    validatorHandler(updateAutorSchema, "body"),
+    (req, res) => {
 
     const autores = [
         { id: 1, 
@@ -165,7 +168,10 @@ router.patch('/:id', (req, res) => {
 })
 
 //ENDPOINT ELIMINAR UN AUTOR
-router.delete('/:id', (req, res) => {
+router.delete('/:id', 
+    validatorHandler(getAutorSchema, "params"),
+    
+    (req, res) => {
     const autores = [
         { id: 1, 
                 nombre: "Gabriel García Marquez", 
